@@ -1,0 +1,3389 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width,initial-scale=1">
+
+<title>SIAGRM — Informe Maestro</title>
+
+<style>
+
+body {
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+
+header {
+    background:#173f73;
+    color:white;
+    padding:38px 45px;
+}
+
+header h1 {
+    margin:0;
+    font-size:34px;
+}
+
+header p {
+    margin:8px 0 0;
+    font-size:15px;
+}
+
+main {
+    max-width:1500px;
+    margin:auto;
+    padding:30px;
+}
+
+section {
+    background:white;
+    margin-bottom:25px;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 3px 15px rgba(0,0,0,.07);
+}
+
+h2 {
+    color:#173f73;
+    border-bottom:2px solid #dbe5f1;
+    padding-bottom:10px;
+}
+
+h3 {
+    color:#315b88;
+}
+
+.kpis {
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(190px,1fr));
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.kpi {
+    background:white;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+}
+
+.kpi-title {
+    color:#64748b;
+    font-size:13px;
+}
+
+.kpi-value {
+    font-size:29px;
+    font-weight:800;
+    margin-top:7px;
+    color:#173f73;
+}
+
+.kpi-sub {
+    color:#64748b;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.pass {
+    color:#15803d;
+    font-weight:bold;
+}
+
+.fail {
+    color:#b91c1c;
+    font-weight:bold;
+}
+
+.tabla {
+    width:100%;
+    border-collapse:collapse;
+    font-size:12px;
+}
+
+.tabla th {
+    background:#173f73;
+    color:white;
+    padding:8px;
+    text-align:left;
+}
+
+.tabla td {
+    padding:7px;
+    border-bottom:1px solid #e2e8f0;
+}
+
+.alerta {
+    background:#fff7ed;
+    border-left:5px solid #ea580c;
+    padding:15px;
+    border-radius:8px;
+}
+
+.ok {
+    background:#f0fdf4;
+    border-left:5px solid #16a34a;
+    padding:15px;
+    border-radius:8px;
+}
+
+.footer {
+    color:#64748b;
+    text-align:center;
+    padding:30px;
+    font-size:12px;
+}
+
+ul {
+    line-height:1.8;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>
+SIAGRM
+</h1>
+
+<p>
+Sistema Inteligente de Analítica para la Gestión Preventiva del Riesgo de Mora
+</p>
+
+<p>
+<strong>Informe Maestro de Desarrollo, Validación y Resultados</strong>
+</p>
+
+<p>
+Generado:
+2026-08-12 15:19:27
+</p>
+
+</header>
+
+<main>
+
+<section>
+
+<h2>1. Resumen ejecutivo</h2>
+
+<div class="kpis">
+
+
+    <div class="kpi">
+        <div class="kpi-title">Registros analizados</div>
+        <div class="kpi-value">8,096</div>
+        <div class="kpi-sub">Base analítica oficial</div>
+    </div>
+    
+
+
+    <div class="kpi">
+        <div class="kpi-title">Alertas</div>
+        <div class="kpi-value">1,306</div>
+        <div class="kpi-sub">16.13%</div>
+    </div>
+    
+
+
+    <div class="kpi">
+        <div class="kpi-title">Críticos</div>
+        <div class="kpi-value">850</div>
+        <div class="kpi-sub">10.50%</div>
+    </div>
+    
+
+
+    <div class="kpi">
+        <div class="kpi-title">Alto + Crítico</div>
+        <div class="kpi-value">16.13%</div>
+        <div class="kpi-sub">Prioridad preventiva</div>
+    </div>
+    
+
+
+    <div class="kpi">
+        <div class="kpi-title">ROC-AUC</div>
+        <div class="kpi-value">0.7101</div>
+        <div class="kpi-sub">Métrica oficial</div>
+    </div>
+    
+
+
+    <div class="kpi">
+        <div class="kpi-title">QA final</div>
+        <div class="kpi-value">VALIDADO</div>
+        <div class="kpi-sub">Auditoría del informe</div>
+    </div>
+    
+
+</div>
+
+<p>
+SIAGRM integra un flujo de analítica preventiva que parte de la
+base analítica oficial, utiliza artefactos de modelamiento controlados
+mediante Runtime Contract y expone resultados mediante dashboard,
+reporte y simulador predictivo.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>2. Identidad del modelo</h2>
+
+<table class="tabla">
+
+<tr>
+<th>Elemento</th>
+<th>Valor</th>
+</tr>
+
+<tr>
+<td>Modelo canónico</td>
+<td>Regresion_Logistica</td>
+</tr>
+
+<tr>
+<td>Versión</td>
+<td>5.0</td>
+</tr>
+
+<tr>
+<td>Calibración</td>
+<td>isotonic</td>
+</tr>
+
+<tr>
+<td>Arquitectura de inferencia</td>
+<td>PREPROCESADOR_MODELO</td>
+</tr>
+
+<tr>
+<td>Threshold modelo</td>
+<td>
+0.286000
+</td>
+</tr>
+
+<tr>
+<td>Umbral Alto</td>
+<td>
+0.650000
+</td>
+</tr>
+
+<tr>
+<td>Umbral Crítico</td>
+<td>
+0.900000
+</td>
+</tr>
+
+</table>
+
+</section>
+
+
+<section>
+
+<h2>3. Distribución del riesgo</h2>
+
+<div class="kpis">
+
+
+    <div class="kpi">
+        <div class="kpi-title">Bajo</div>
+        <div class="kpi-value">2,807</div>
+        <div class="kpi-sub">34.67%</div>
+    </div>
+    
+
+
+    <div class="kpi">
+        <div class="kpi-title">Medio</div>
+        <div class="kpi-value">3,983</div>
+        <div class="kpi-sub">49.20%</div>
+    </div>
+    
+
+
+    <div class="kpi">
+        <div class="kpi-title">Alto</div>
+        <div class="kpi-value">456</div>
+        <div class="kpi-sub">5.63%</div>
+    </div>
+    
+
+
+    <div class="kpi">
+        <div class="kpi-title">Crítico</div>
+        <div class="kpi-value">850</div>
+        <div class="kpi-sub">10.50%</div>
+    </div>
+    
+
+</div>
+
+<p>
+La clasificación se encuentra determinada por los umbrales oficiales
+del Runtime Contract y no por valores creados dentro de este informe.
+</p>
+
+</section>
+
+
+<section>
+
+<h2>4. Evaluación del modelo</h2>
+
+<table class="tabla">
+
+<tr>
+<th>Métrica</th>
+<th>Valor</th>
+</tr>
+
+<tr>
+<td>ROC-AUC</td>
+<td>
+0.710113
+</td>
+</tr>
+
+<tr>
+<td>Balanced Accuracy</td>
+<td>
+0.738983
+</td>
+</tr>
+
+<tr>
+<td>Recall</td>
+<td>
+0.903091
+</td>
+</tr>
+
+<tr>
+<td>F1</td>
+<td>
+0.777731
+</td>
+</tr>
+
+</table>
+
+<h3>Comparación oficial de modelos</h3>
+
+<table class="dataframe tabla">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Ranking</th>
+      <th>Modelo</th>
+      <th>ROC_AUC_CV</th>
+      <th>ROC_AUC_CV_STD</th>
+      <th>Fold_1</th>
+      <th>Fold_2</th>
+      <th>Fold_3</th>
+      <th>Fold_4</th>
+      <th>Fold_5</th>
+      <th>Seleccionado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Regresion_Logistica</td>
+      <td>0.6459</td>
+      <td>0.2024</td>
+      <td>0.4905</td>
+      <td>0.7438</td>
+      <td>0.8793</td>
+      <td>0.7827</td>
+      <td>0.3331</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Gradient_Boosting</td>
+      <td>0.6406</td>
+      <td>0.1959</td>
+      <td>0.4827</td>
+      <td>0.7323</td>
+      <td>0.8647</td>
+      <td>0.7804</td>
+      <td>0.3427</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Random_Forest</td>
+      <td>0.6276</td>
+      <td>0.2009</td>
+      <td>0.4549</td>
+      <td>0.7409</td>
+      <td>0.8271</td>
+      <td>0.7917</td>
+      <td>0.3234</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+</section>
+
+
+<section>
+
+<h2>5. Variables explicativas</h2>
+
+<p>
+Las siguientes variables corresponden a las salidas oficiales
+disponibles en los bloques anteriores.
+</p>
+
+<table class="dataframe tabla">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Variable</th>
+      <th>Importancia</th>
+      <th>Participacion_pct</th>
+      <th>Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>departamento</td>
+      <td>91.2823</td>
+      <td>93.4243</td>
+      <td>Sociodemográfica</td>
+    </tr>
+    <tr>
+      <td>nivel_formacion</td>
+      <td>5.0931</td>
+      <td>5.2126</td>
+      <td>Académica</td>
+    </tr>
+    <tr>
+      <td>sexo</td>
+      <td>1.0399</td>
+      <td>1.0643</td>
+      <td>Sociodemográfica</td>
+    </tr>
+    <tr>
+      <td>modalidad_credito</td>
+      <td>0.2035</td>
+      <td>0.2083</td>
+      <td>Académica</td>
+    </tr>
+    <tr>
+      <td>estrato</td>
+      <td>0.0886</td>
+      <td>0.0906</td>
+      <td>Sociodemográfica</td>
+    </tr>
+  </tbody>
+</table>
+
+</section>
+
+
+<section>
+
+<h2>6. Análisis territorial</h2>
+
+<table class="dataframe tabla">
+  <thead>
+    <tr style="text-align: right;">
+      <th>departamento_dashboard</th>
+      <th>segmentos</th>
+      <th>score_promedio</th>
+      <th>score_maximo</th>
+      <th>alertas</th>
+      <th>pct_alertas</th>
+      <th>departamento</th>
+      <th>ranking_prioridad</th>
+      <th>registros</th>
+      <th>tasa_alerta_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>casanare</td>
+      <td>206</td>
+      <td>1.0000</td>
+      <td>1.0000</td>
+      <td>206</td>
+      <td>100.0000</td>
+      <td>casanare</td>
+      <td>1</td>
+      <td>206</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>putumayo</td>
+      <td>412</td>
+      <td>0.9976</td>
+      <td>1.0000</td>
+      <td>412</td>
+      <td>100.0000</td>
+      <td>putumayo</td>
+      <td>2</td>
+      <td>412</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>arauca</td>
+      <td>195</td>
+      <td>0.9915</td>
+      <td>1.0000</td>
+      <td>195</td>
+      <td>100.0000</td>
+      <td>arauca</td>
+      <td>3</td>
+      <td>195</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>guainia</td>
+      <td>9</td>
+      <td>0.7933</td>
+      <td>0.8194</td>
+      <td>9</td>
+      <td>100.0000</td>
+      <td>guainia</td>
+      <td>4</td>
+      <td>9</td>
+      <td>100.0000</td>
+    </tr>
+    <tr>
+      <td>choco</td>
+      <td>32</td>
+      <td>0.7165</td>
+      <td>1.0000</td>
+      <td>29</td>
+      <td>90.6250</td>
+      <td>choco</td>
+      <td>5</td>
+      <td>32</td>
+      <td>90.6200</td>
+    </tr>
+    <tr>
+      <td>cauca</td>
+      <td>433</td>
+      <td>0.6484</td>
+      <td>0.7427</td>
+      <td>99</td>
+      <td>22.8637</td>
+      <td>cauca</td>
+      <td>6</td>
+      <td>433</td>
+      <td>22.8600</td>
+    </tr>
+    <tr>
+      <td>norte de santander</td>
+      <td>446</td>
+      <td>0.6464</td>
+      <td>0.6850</td>
+      <td>115</td>
+      <td>25.7848</td>
+      <td>norte de santander</td>
+      <td>7</td>
+      <td>446</td>
+      <td>25.7800</td>
+    </tr>
+    <tr>
+      <td>bolivar</td>
+      <td>888</td>
+      <td>0.6382</td>
+      <td>1.0000</td>
+      <td>139</td>
+      <td>15.6532</td>
+      <td>bolivar</td>
+      <td>8</td>
+      <td>888</td>
+      <td>15.6500</td>
+    </tr>
+    <tr>
+      <td>atlantico</td>
+      <td>731</td>
+      <td>0.6344</td>
+      <td>1.0000</td>
+      <td>70</td>
+      <td>9.5759</td>
+      <td>atlantico</td>
+      <td>9</td>
+      <td>731</td>
+      <td>9.5800</td>
+    </tr>
+    <tr>
+      <td>quindio</td>
+      <td>235</td>
+      <td>0.6321</td>
+      <td>0.6776</td>
+      <td>6</td>
+      <td>2.5532</td>
+      <td>quindio</td>
+      <td>10</td>
+      <td>235</td>
+      <td>2.5500</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>170</td>
+      <td>0.6315</td>
+      <td>0.6850</td>
+      <td>4</td>
+      <td>2.3529</td>
+      <td>caqueta</td>
+      <td>11</td>
+      <td>170</td>
+      <td>2.3500</td>
+    </tr>
+    <tr>
+      <td>tolima</td>
+      <td>479</td>
+      <td>0.6264</td>
+      <td>0.7436</td>
+      <td>7</td>
+      <td>1.4614</td>
+      <td>tolima</td>
+      <td>12</td>
+      <td>479</td>
+      <td>1.4600</td>
+    </tr>
+    <tr>
+      <td>meta</td>
+      <td>364</td>
+      <td>0.6264</td>
+      <td>0.6537</td>
+      <td>6</td>
+      <td>1.6484</td>
+      <td>meta</td>
+      <td>13</td>
+      <td>364</td>
+      <td>1.6500</td>
+    </tr>
+    <tr>
+      <td>boyaca</td>
+      <td>134</td>
+      <td>0.5876</td>
+      <td>1.0000</td>
+      <td>9</td>
+      <td>6.7164</td>
+      <td>boyaca</td>
+      <td>14</td>
+      <td>134</td>
+      <td>6.7200</td>
+    </tr>
+    <tr>
+      <td>vaupes</td>
+      <td>1</td>
+      <td>0.4808</td>
+      <td>0.4808</td>
+      <td>0</td>
+      <td>0.0000</td>
+      <td>vaupes</td>
+      <td>15</td>
+      <td>1</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>magdalena</td>
+      <td>996</td>
+      <td>0.3537</td>
+      <td>0.5402</td>
+      <td>0</td>
+      <td>0.0000</td>
+      <td>magdalena</td>
+      <td>16</td>
+      <td>996</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>guaviare</td>
+      <td>53</td>
+      <td>0.1488</td>
+      <td>0.2000</td>
+      <td>0</td>
+      <td>0.0000</td>
+      <td>guaviare</td>
+      <td>17</td>
+      <td>53</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>risaralda</td>
+      <td>260</td>
+      <td>0.0973</td>
+      <td>0.1432</td>
+      <td>0</td>
+      <td>0.0000</td>
+      <td>risaralda</td>
+      <td>18</td>
+      <td>260</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>591</td>
+      <td>0.0463</td>
+      <td>0.3165</td>
+      <td>0</td>
+      <td>0.0000</td>
+      <td>cordoba</td>
+      <td>19</td>
+      <td>591</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>734</td>
+      <td>0.0415</td>
+      <td>0.1809</td>
+      <td>0</td>
+      <td>0.0000</td>
+      <td>antioquia</td>
+      <td>20</td>
+      <td>734</td>
+      <td>0.0000</td>
+    </tr>
+    <tr>
+      <td>valle del cauca</td>
+      <td>727</td>
+      <td>0.0275</td>
+      <td>0.0275</td>
+      <td>0</td>
+      <td>0.0000</td>
+      <td>valle del cauca</td>
+      <td>21</td>
+      <td>727</td>
+      <td>0.0000</td>
+    </tr>
+  </tbody>
+</table>
+
+</section>
+
+
+<section>
+
+<h2>7. Simulador predictivo</h2>
+
+<div class="ok">
+
+<strong>
+Estado:
+DISPONIBLE
+</strong>
+
+<p>
+El simulador utiliza los artefactos oficiales de inferencia.
+No se generan datos sintéticos ni se ejecuta reentrenamiento.
+</p>
+
+<p>
+Variables oficiales:
+sexo | departamento | estrato | nivel_formacion | modalidad_credito
+</p>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>8. Gobernanza y trazabilidad</h2>
+
+<ul>
+
+<li>
+<strong>SSOT:</strong>
+la información utilizada procede de las fuentes oficiales
+disponibles en el contexto SIAGRM.
+</li>
+
+<li>
+<strong>Runtime Contract:</strong>
+los artefactos y thresholds se consumen desde el contrato oficial.
+</li>
+
+<li>
+<strong>Inferencia:</strong>
+no se ejecuta entrenamiento dentro de este bloque.
+</li>
+
+<li>
+<strong>Datos sintéticos:</strong>
+no se generan para la construcción de resultados.
+</li>
+
+<li>
+<strong>Reproducibilidad:</strong>
+los resultados dependen de los artefactos oficiales existentes.
+</li>
+
+</ul>
+
+</section>
+
+
+<section>
+
+<h2>9. Auditoría final MASTER QA</h2>
+
+<table class="dataframe tabla">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Prueba</th>
+      <th>Resultado</th>
+      <th>Detalle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Base analítica disponible</td>
+      <td>PASS</td>
+      <td>8,096 registros</td>
+    </tr>
+    <tr>
+      <td>TOTAL_26 consistente</td>
+      <td>PASS</td>
+      <td>TOTAL_26=8,096 | DataFrame=8,096</td>
+    </tr>
+    <tr>
+      <td>Bandas de riesgo suman total</td>
+      <td>PASS</td>
+      <td>Bajo=2,807 | Medio=3,983 | Alto=456 | Crítico=850 | Total=8,096</td>
+    </tr>
+    <tr>
+      <td>Alertas consistentes con Alto + Crítico</td>
+      <td>PASS</td>
+      <td>Alertas=1,306 | Alto+Crítico=1,306</td>
+    </tr>
+    <tr>
+      <td>ROC-AUC válido</td>
+      <td>PASS</td>
+      <td>ROC-AUC=0.710113</td>
+    </tr>
+    <tr>
+      <td>Identidad registros 18→26</td>
+      <td>PASS</td>
+      <td>Bloque 18=8,096 | Bloque 26=8,096</td>
+    </tr>
+    <tr>
+      <td>Identidad ROC-AUC 18→26</td>
+      <td>PASS</td>
+      <td>Bloque 18=0.710113 | Bloque 26=0.710113</td>
+    </tr>
+    <tr>
+      <td>Simulador disponible</td>
+      <td>PASS</td>
+      <td>Motor de inferencia disponible.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="ok">
+
+<strong>
+ESTADO FINAL:
+VALIDADO
+</strong>
+
+</div>
+
+</section>
+
+
+<section>
+
+<h2>10. Conclusiones</h2>
+
+<ul>
+
+<li>El sistema analizó 8,096 registros en la base analítica oficial.</li><li>La población de mayor prioridad preventiva corresponde a los segmentos clasificados como Alto o Crítico.</li><li>El sistema identifica 1,306 alertas preventivas según los umbrales oficiales.</li><li>El ROC-AUC oficial registrado es 0.7101.</li><li>La inferencia operativa se encuentra desacoplada del entrenamiento y utiliza los artefactos oficiales del Runtime Contract.</li><li>El simulador utiliza variables observadas y no genera datos sintéticos para construir la inferencia.</li>
+
+</ul>
+
+</section>
+
+
+<section>
+
+<h2>11. Recomendaciones</h2>
+
+<ul>
+
+<li>Mantener el Runtime Contract como fuente oficial de artefactos.</li><li>Mantener el SSOT en modo READ-ONLY durante la inferencia.</li><li>Monitorear periódicamente la estabilidad del score y la calibración.</li><li>Controlar posibles cambios en la distribución de las variables.</li><li>Validar periódicamente ROC-AUC, Recall, F1 y Balanced Accuracy.</li><li>Monitorear la distribución Bajo/Medio/Alto/Crítico.</li><li>Monitorear la tasa de alertas por territorio.</li><li>Mantener trazabilidad de versiones del modelo y preprocesador.</li><li>Evitar reentrenamientos no documentados fuera del pipeline oficial.</li><li>Utilizar el simulador como herramienta de análisis preventivo y no como sustituto del proceso institucional de decisión.</li>
+
+</ul>
+
+</section>
+
+
+<section>
+
+<h2>12. Base analítica</h2>
+
+<p>
+Primeras observaciones de la base analítica oficial:
+</p>
+
+<table class="dataframe tabla">
+  <thead>
+    <tr style="text-align: right;">
+      <th>departamento</th>
+      <th>categoria_municipio</th>
+      <th>sexo</th>
+      <th>estrato</th>
+      <th>nivel_formacion</th>
+      <th>modalidad_linea</th>
+      <th>modalidad_credito</th>
+      <th>sector_ies</th>
+      <th>rango_valor_total</th>
+      <th>target_riesgo_mora</th>
+      <th>id_fila_modelo</th>
+      <th>grupo_validacion</th>
+      <th>prob_riesgo_mora</th>
+      <th>target_real</th>
+      <th>score_riesgo</th>
+      <th>sexo_dashboard</th>
+      <th>departamento_dashboard</th>
+      <th>estrato_dashboard</th>
+      <th>nivel_formacion_dashboard</th>
+      <th>modalidad_credito_dashboard</th>
+      <th>nivel_riesgo</th>
+      <th>alerta_activada</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>exterior</td>
+      <td>credito exterior</td>
+      <td>matricula</td>
+      <td>NaN</td>
+      <td>i</td>
+      <td>0</td>
+      <td>0</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>exterior</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>exterior</td>
+      <td>credito exterior</td>
+      <td>matricula</td>
+      <td>NaN</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>1</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>exterior</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>2</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>maestria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>3</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>maestria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>4</td>
+      <td>antioquia__2022</td>
+      <td>0.0402</td>
+      <td>0</td>
+      <td>0.0402</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>5</td>
+      <td>antioquia__2022</td>
+      <td>0.0341</td>
+      <td>0</td>
+      <td>0.0341</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>6</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>7</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>8</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>9</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>10</td>
+      <td>antioquia__2022</td>
+      <td>0.0343</td>
+      <td>0</td>
+      <td>0.0343</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>11</td>
+      <td>antioquia__2022</td>
+      <td>0.0165</td>
+      <td>0</td>
+      <td>0.0165</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>maestria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>12</td>
+      <td>antioquia__2022</td>
+      <td>0.1229</td>
+      <td>0</td>
+      <td>0.1229</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>maestria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>13</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>14</td>
+      <td>antioquia__2022</td>
+      <td>0.1727</td>
+      <td>0</td>
+      <td>0.1727</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>15</td>
+      <td>antioquia__2022</td>
+      <td>0.1772</td>
+      <td>0</td>
+      <td>0.1772</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>16</td>
+      <td>antioquia__2022</td>
+      <td>0.1772</td>
+      <td>0</td>
+      <td>0.1772</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>17</td>
+      <td>antioquia__2022</td>
+      <td>0.1636</td>
+      <td>0</td>
+      <td>0.1636</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>v</td>
+      <td>0</td>
+      <td>18</td>
+      <td>antioquia__2022</td>
+      <td>0.1223</td>
+      <td>0</td>
+      <td>0.1223</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>19</td>
+      <td>antioquia__2022</td>
+      <td>0.0792</td>
+      <td>0</td>
+      <td>0.0792</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>20</td>
+      <td>antioquia__2022</td>
+      <td>0.0269</td>
+      <td>0</td>
+      <td>0.0269</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>21</td>
+      <td>antioquia__2022</td>
+      <td>0.0278</td>
+      <td>0</td>
+      <td>0.0278</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>22</td>
+      <td>antioquia__2022</td>
+      <td>0.0275</td>
+      <td>0</td>
+      <td>0.0275</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>23</td>
+      <td>antioquia__2022</td>
+      <td>0.0275</td>
+      <td>0</td>
+      <td>0.0275</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>24</td>
+      <td>antioquia__2022</td>
+      <td>0.0093</td>
+      <td>0</td>
+      <td>0.0093</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>25</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>26</td>
+      <td>antioquia__2022</td>
+      <td>0.0587</td>
+      <td>0</td>
+      <td>0.0587</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>27</td>
+      <td>antioquia__2022</td>
+      <td>0.0792</td>
+      <td>0</td>
+      <td>0.0792</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>28</td>
+      <td>antioquia__2022</td>
+      <td>0.0792</td>
+      <td>0</td>
+      <td>0.0792</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>29</td>
+      <td>antioquia__2022</td>
+      <td>0.0515</td>
+      <td>0</td>
+      <td>0.0515</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>v</td>
+      <td>0</td>
+      <td>30</td>
+      <td>antioquia__2022</td>
+      <td>0.0396</td>
+      <td>0</td>
+      <td>0.0396</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>31</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>32</td>
+      <td>antioquia__2022</td>
+      <td>0.0278</td>
+      <td>0</td>
+      <td>0.0278</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>33</td>
+      <td>antioquia__2022</td>
+      <td>0.0275</td>
+      <td>0</td>
+      <td>0.0275</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>34</td>
+      <td>antioquia__2022</td>
+      <td>0.0275</td>
+      <td>0</td>
+      <td>0.0275</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>35</td>
+      <td>antioquia__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>maestria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>36</td>
+      <td>antioquia__2022</td>
+      <td>0.0400</td>
+      <td>0</td>
+      <td>0.0400</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>maestria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>37</td>
+      <td>antioquia__2022</td>
+      <td>0.0275</td>
+      <td>0</td>
+      <td>0.0275</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>38</td>
+      <td>antioquia__2022</td>
+      <td>0.0402</td>
+      <td>0</td>
+      <td>0.0402</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>39</td>
+      <td>antioquia__2022</td>
+      <td>0.0587</td>
+      <td>0</td>
+      <td>0.0587</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>40</td>
+      <td>antioquia__2022</td>
+      <td>0.0792</td>
+      <td>0</td>
+      <td>0.0792</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>41</td>
+      <td>antioquia__2022</td>
+      <td>0.0400</td>
+      <td>0</td>
+      <td>0.0400</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>v</td>
+      <td>0</td>
+      <td>42</td>
+      <td>antioquia__2022</td>
+      <td>0.0337</td>
+      <td>0</td>
+      <td>0.0337</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>doctorado</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>43</td>
+      <td>antioquia__2022</td>
+      <td>0.0345</td>
+      <td>0</td>
+      <td>0.0345</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>doctorado</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>44</td>
+      <td>antioquia__2022</td>
+      <td>0.0269</td>
+      <td>0</td>
+      <td>0.0269</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>45</td>
+      <td>antioquia__2022</td>
+      <td>0.0473</td>
+      <td>0</td>
+      <td>0.0473</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>46</td>
+      <td>antioquia__2022</td>
+      <td>0.0587</td>
+      <td>0</td>
+      <td>0.0587</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>47</td>
+      <td>antioquia__2022</td>
+      <td>0.0402</td>
+      <td>0</td>
+      <td>0.0402</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>antioquia</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>v</td>
+      <td>0</td>
+      <td>48</td>
+      <td>antioquia__2022</td>
+      <td>0.0343</td>
+      <td>0</td>
+      <td>0.0343</td>
+      <td>femenino</td>
+      <td>antioquia</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>exterior</td>
+      <td>credito exterior</td>
+      <td>matricula</td>
+      <td>NaN</td>
+      <td>i</td>
+      <td>0</td>
+      <td>201</td>
+      <td>caqueta__2022</td>
+      <td>0.6147</td>
+      <td>0</td>
+      <td>0.6147</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>exterior</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>202</td>
+      <td>caqueta__2022</td>
+      <td>0.6052</td>
+      <td>0</td>
+      <td>0.6052</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>203</td>
+      <td>caqueta__2022</td>
+      <td>0.6052</td>
+      <td>0</td>
+      <td>0.6052</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>204</td>
+      <td>caqueta__2022</td>
+      <td>0.6469</td>
+      <td>0</td>
+      <td>0.6469</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>205</td>
+      <td>caqueta__2022</td>
+      <td>0.6113</td>
+      <td>0</td>
+      <td>0.6113</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>206</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>207</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>208</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>209</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>v</td>
+      <td>0</td>
+      <td>210</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>211</td>
+      <td>caqueta__2022</td>
+      <td>0.5769</td>
+      <td>0</td>
+      <td>0.5769</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>212</td>
+      <td>caqueta__2022</td>
+      <td>0.5974</td>
+      <td>0</td>
+      <td>0.5974</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>213</td>
+      <td>caqueta__2022</td>
+      <td>0.6052</td>
+      <td>0</td>
+      <td>0.6052</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>214</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>215</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>216</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>217</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>v</td>
+      <td>0</td>
+      <td>218</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>219</td>
+      <td>caqueta__2022</td>
+      <td>0.6061</td>
+      <td>0</td>
+      <td>0.6061</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>220</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>221</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>222</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>caqueta</td>
+      <td>rural disperso</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>223</td>
+      <td>caqueta__2022</td>
+      <td>0.6472</td>
+      <td>0</td>
+      <td>0.6472</td>
+      <td>femenino</td>
+      <td>caqueta</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Medio</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>exterior</td>
+      <td>credito exterior</td>
+      <td>matricula</td>
+      <td>NaN</td>
+      <td>i</td>
+      <td>0</td>
+      <td>300</td>
+      <td>cordoba__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>exterior</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>301</td>
+      <td>cordoba__2022</td>
+      <td>0.0275</td>
+      <td>0</td>
+      <td>0.0275</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>v</td>
+      <td>0</td>
+      <td>302</td>
+      <td>cordoba__2022</td>
+      <td>0.0151</td>
+      <td>0</td>
+      <td>0.0151</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>303</td>
+      <td>cordoba__2022</td>
+      <td>0.0345</td>
+      <td>0</td>
+      <td>0.0345</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>304</td>
+      <td>cordoba__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>305</td>
+      <td>cordoba__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>306</td>
+      <td>cordoba__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>307</td>
+      <td>cordoba__2022</td>
+      <td>0.0345</td>
+      <td>0</td>
+      <td>0.0345</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>308</td>
+      <td>cordoba__2022</td>
+      <td>0.0345</td>
+      <td>0</td>
+      <td>0.0345</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>309</td>
+      <td>cordoba__2022</td>
+      <td>0.0269</td>
+      <td>0</td>
+      <td>0.0269</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>maestria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>310</td>
+      <td>cordoba__2022</td>
+      <td>0.0792</td>
+      <td>0</td>
+      <td>0.0792</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>maestria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>311</td>
+      <td>cordoba__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>312</td>
+      <td>cordoba__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>v</td>
+      <td>0</td>
+      <td>313</td>
+      <td>cordoba__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>i</td>
+      <td>0</td>
+      <td>314</td>
+      <td>cordoba__2022</td>
+      <td>0.1334</td>
+      <td>0</td>
+      <td>0.1334</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>315</td>
+      <td>cordoba__2022</td>
+      <td>0.1930</td>
+      <td>0</td>
+      <td>0.1930</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iii</td>
+      <td>0</td>
+      <td>316</td>
+      <td>cordoba__2022</td>
+      <td>0.2008</td>
+      <td>0</td>
+      <td>0.2008</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>317</td>
+      <td>cordoba__2022</td>
+      <td>0.1319</td>
+      <td>0</td>
+      <td>0.1319</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>privado</td>
+      <td>v</td>
+      <td>0</td>
+      <td>318</td>
+      <td>cordoba__2022</td>
+      <td>0.1147</td>
+      <td>0</td>
+      <td>0.1147</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>ciudades y aglomeraciones</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>privado</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>319</td>
+      <td>cordoba__2022</td>
+      <td>0.0570</td>
+      <td>0</td>
+      <td>0.0570</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>iv</td>
+      <td>0</td>
+      <td>320</td>
+      <td>cordoba__2022</td>
+      <td>0.0275</td>
+      <td>0</td>
+      <td>0.0275</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>especializacion universitaria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>v</td>
+      <td>0</td>
+      <td>321</td>
+      <td>cordoba__2022</td>
+      <td>0.0082</td>
+      <td>0</td>
+      <td>0.0082</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>pregrado</td>
+      <td>sostenimiento</td>
+      <td>oficial</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>322</td>
+      <td>cordoba__2022</td>
+      <td>0.0275</td>
+      <td>0</td>
+      <td>0.0275</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>formacion tecnica profesional</td>
+      <td>sostenimiento</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>maestria</td>
+      <td>posgrado pais</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>323</td>
+      <td>cordoba__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>maestria</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>324</td>
+      <td>cordoba__2022</td>
+      <td>0.0275</td>
+      <td>0</td>
+      <td>0.0275</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>v</td>
+      <td>0</td>
+      <td>325</td>
+      <td>cordoba__2022</td>
+      <td>0.0269</td>
+      <td>0</td>
+      <td>0.0269</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>tecnologico</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>i</td>
+      <td>0</td>
+      <td>326</td>
+      <td>cordoba__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>cordoba</td>
+      <td>intermedio</td>
+      <td>femenino</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>pregrado</td>
+      <td>matricula</td>
+      <td>oficial</td>
+      <td>ii</td>
+      <td>0</td>
+      <td>327</td>
+      <td>cordoba__2022</td>
+      <td>0.0284</td>
+      <td>0</td>
+      <td>0.0284</td>
+      <td>femenino</td>
+      <td>cordoba</td>
+      <td>1</td>
+      <td>universitario</td>
+      <td>matricula</td>
+      <td>Bajo</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+</section>
+
+
+<div class="footer">
+
+SIAGRM — Informe Maestro<br>
+SSOT READ-ONLY | Sin reentrenamiento | Sin datos sintéticos<br>
+Generado automáticamente por BLOQUE 26
+
+</div>
+
+</main>
+
+</body>
+</html>
