@@ -1,0 +1,92 @@
+{
+  "TOTAL_23": 8096,
+  "ALERTAS_23": 1306,
+  "PCT_ALERTAS_23": 16.131422924901187,
+  "CRITICOS_23": 850,
+  "ALTOS_23": 456,
+  "MEDIOS_23": 3983,
+  "BAJOS_23": 2807,
+  "ROC_AUC_23": 0.7101126177258946,
+  "DQS_23": 100.0,
+  "THRESHOLD_23": 0.28599956741474764,
+  "UMBRAL_MEDIO_23": 0.35,
+  "UMBRAL_ALTO_23": 0.65,
+  "UMBRAL_CRITICO_23": 0.9,
+  "MODELO_CANONICO_23": "Regresion_Logistica",
+  "MODELO_RUNTIME_23": "CalibratedClassifierCV",
+  "METODO_CALIBRACION_23": "isotonic",
+  "FEATURE_INPUTS_23": [
+    "sexo",
+    "departamento",
+    "estrato",
+    "nivel_formacion",
+    "modalidad_credito"
+  ],
+  "RAW_INPUTS_23": [
+    "departamento",
+    "categoria_municipio",
+    "sexo",
+    "estrato",
+    "nivel_formacion",
+    "modalidad_linea",
+    "modalidad_credito",
+    "sector_ies",
+    "rango_valor_total"
+  ],
+  "SIM_BASE_23": {
+    "sexo": "femenino",
+    "departamento": "antioquia",
+    "estrato": "1",
+    "nivel_formacion": "especializacion universitaria",
+    "modalidad_credito": "matricula"
+  },
+  "VARIABLES_SOCIODEMOGRAFICAS_23": [
+    "sexo",
+    "departamento",
+    "estrato"
+  ],
+  "VARIABLES_ACADEMICAS_23": [
+    "nivel_formacion",
+    "modalidad_credito"
+  ],
+  "VARIABLES_OFICIALES_23": [
+    "sexo",
+    "departamento",
+    "estrato",
+    "nivel_formacion",
+    "modalidad_credito"
+  ],
+  "INSIGHTS_23": [
+    {
+      "tipo": "Territorial",
+      "territorio": "casanare",
+      "hallazgo": "Departamento con mayor score promedio de riesgo.",
+      "valor": "1.0",
+      "accion": "Priorizar seguimiento preventivo en el territorio."
+    },
+    {
+      "tipo": "Modelo",
+      "territorio": "Nacional",
+      "hallazgo": "Regresión Logística fue seleccionada como modelo canónico porque obtuvo el mayor ROC-AUC promedio en la validación cruzada agrupada utilizada para la comparación de modelos.",
+      "valor": "0.645878735740481",
+      "accion": "Utilizar el modelo canónico para las inferencias oficiales."
+    },
+    {
+      "tipo": "Población",
+      "territorio": "Nacional",
+      "hallazgo": "Proporción de segmentos clasificados como Alto o Crítico.",
+      "valor": "16.13",
+      "accion": "Focalizar estrategias preventivas sobre los casos priorizados."
+    }
+  ],
+  "ALERTA_MIN_23": 0.65,
+  "IDENTIDAD_18_23": {
+    "segmentos": true,
+    "bajos": true,
+    "medios": true,
+    "altos": true,
+    "criticos": true,
+    "alertas": true,
+    "roc_auc": true
+  }
+}
