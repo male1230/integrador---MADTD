@@ -263,11 +263,6 @@ QA_REPORT = datos['qa_report']
 
 PREFLIGHT_SCORE = None
 PRE_FLIGHT_ROW = None
-try:
-    PREFLIGHT_SCORE, PRE_FLIGHT_ROW = obtener_preflight()
-except Exception:
-    PREFLIGHT_SCORE = None
-    PRE_FLIGHT_ROW = None
 
 # Asegurar tipos
 if 'score_riesgo' in SEGMENTOS.columns:
@@ -476,6 +471,13 @@ def profile_data(profile_col):
     prof['tasa_alerta_pct'] = (prof['alertas'] / prof['registros'] * 100).fillna(0).round(2)
     return prof
 
+# Ejecutar preflight ahora que la función está definida
+try:
+    PREFLIGHT_SCORE, PRE_FLIGHT_ROW = obtener_preflight()
+except Exception:
+    PREFLIGHT_SCORE = None
+    PRE_FLIGHT_ROW = None
+
 # =============================================================================
 # TABS
 # =============================================================================
@@ -609,11 +611,31 @@ with tabs[2]:
         col_y = 'variable_original' if 'variable_original' in IMPORTANCE.columns else (IMPORTANCE.columns[0] if len(IMPORTANCE.columns) > 0 else None)
         
         if col_y:
-            fig = px.bar(IMPORTANCE.sort_values(col_x, ascending=True).tail(20),
-                         x=col_x, y=col_y, orientation='h',
+            # Preparar dataframe para la gráfica: identificar tipo (Sociodemográfica / Académica / Otro)
+            df_plot = IMPORTANCE.sort_values(col_x, ascending=True).tail(20).copy()
+            def tipo_variable(v):
+                if v in VARIABLES_SOCIODEMOGRAFICAS:
+                    return 'Sociodemográfica'
+                if v in VARIABLES_ACADEMICAS:
+                    return 'Académica'
+                return 'Otro'
+            df_plot['tipo'] = df_plot[col_y].apply(tipo_variable)
+
+            # Ordenar para que los grupos queden visualmente agrupados
+            df_plot = df_plot.sort_values(['tipo', col_x], ascending=[True, True])
+
+            color_map = {
+                'Sociodemográfica': '#2E7D32',
+                'Académica': '#2F80ED',
+                'Otro': '#6B7280'
+            }
+
+            fig = px.bar(df_plot, x=col_x, y=col_y, orientation='h',
                          title="Importancia de variables originales",
-                         color=col_x, color_continuous_scale="Blues")
-            fig.update_layout(template="plotly_white", height=650)
+                         color='tipo', color_discrete_map=color_map,
+                         category_orders={'tipo': ['Sociodemográfica', 'Académica', 'Otro']})
+            fig.update_traces(marker_line_color='rgba(0,0,0,0.06)', marker_line_width=0.6)
+            fig.update_layout(template='plotly_white', height=650, bargap=0.12, legend_title_text='Tipo')
             st.plotly_chart(fig, use_container_width=True)
         
         st.markdown("#### Detalle de importancia")
@@ -747,38 +769,60 @@ with tabs[7]:
         for col in FEATURE_INPUTS:
             tipo = "Sociodemográfica" if col in VARIABLES_SOCIODEMOGRAFICAS else "Académica"
             label = f"{col.replace('_', ' ').title()} — {tipo}"
-            
-            # Obtener opciones únicas de la base
-            opciones = SEGMENTOS[col].dropna().astype(str).unique().tolist()
-            valor_default = str(SIM_BASE.get(col, opciones[0] if opciones else ''))
-            
-            if col == 'estrato':
-                # Intentar convertir a numérico
-                try:
-                    opciones_num = sorted([float(x) for x in opciones if pd.notna(x) and str(x).replace('.','').isdigit()])
-                    if opciones_num:
-                        default_num = float(valor_default) if valor_default.replace('.','').isdigit() else opciones_num[0]
-                        sim_values[col] = st.selectbox(label, options=opciones_num, 
-                                                       index=opciones_num.index(default_num) if default_num in opciones_num else 0,
-                                                       format_func=lambda x: str(int(x)) if x == int(x) else str(x))
+
+            # Obtener datos y opciones únicas de la base
+            serie = SEGMENTOS[col] if col in SEGMENTOS.columns else pd.Series([])
+            opciones = serie.dropna().astype(str).unique().tolist()
+            valor_default = SIM_BASE.get(col, opciones[0] if opciones else '')
+
+            # Detectar columnas numéricas y ofrecer un number_input cuando aplique
+            try:
+                es_numerica = False
+                if col in SEGMENTOS.columns:
+                    es_numerica = pd.api.types.is_numeric_dtype(SEGMENTOS[col])
+                # También aceptar como numérica si las opciones son números y no demasiadas categorías
+                if not es_numerica and opciones:
+                    candidatas_numericas = [s for s in opciones if str(s).replace('.', '', 1).replace('-', '', 1).isdigit()]
+                    if len(candidatas_numericas) == len(opciones) and len(opciones) > 1:
+                        es_numerica = True
+
+                if es_numerica:
+                    vals = pd.to_numeric(serie.dropna(), errors='coerce')
+                    minv = float(vals.min()) if not vals.empty else 0.0
+                    maxv = float(vals.max()) if not vals.empty else 1.0
+                    # Normalizar defaults
+                    try:
+                        default_num = float(valor_default)
+                    except Exception:
+                        default_num = (minv + maxv) / 2 if minv != maxv else minv
+                    step = (maxv - minv) / 100 if maxv > minv else 1.0
+                    sim_values[col] = st.number_input(label, min_value=minv, max_value=maxv, value=default_num, step=step, format="%g")
+                else:
+                    # Comportamiento por defecto: selectbox (con manejo especial para 'estrato')
+                    if col == 'estrato':
+                        try:
+                            opciones_num = sorted([float(x) for x in opciones if pd.notna(x) and str(x).replace('.','').isdigit()])
+                            if opciones_num:
+                                default_num = float(valor_default) if str(valor_default).replace('.','').isdigit() else opciones_num[0]
+                                sim_values[col] = st.selectbox(label, options=opciones_num, 
+                                                               index=opciones_num.index(default_num) if default_num in opciones_num else 0,
+                                                               format_func=lambda x: str(int(x)) if x == int(x) else str(x))
+                            else:
+                                sim_values[col] = st.selectbox(label, options=opciones, index=opciones.index(str(valor_default)) if str(valor_default) in opciones else 0)
+                        except Exception:
+                            sim_values[col] = st.selectbox(label, options=opciones, index=opciones.index(str(valor_default)) if str(valor_default) in opciones else 0)
                     else:
-                        sim_values[col] = st.selectbox(label, options=opciones, index=opciones.index(valor_default) if valor_default in opciones else 0)
-                except Exception:
-                    sim_values[col] = st.selectbox(label, options=opciones, index=opciones.index(valor_default) if valor_default in opciones else 0)
-            else:
-                sim_values[col] = st.selectbox(label, options=opciones, index=opciones.index(valor_default) if valor_default in opciones else 0)
+                        sim_values[col] = st.selectbox(label, options=opciones, index=opciones.index(str(valor_default)) if str(valor_default) in opciones else 0)
+            except Exception:
+                # Fallback seguro a selectbox
+                sim_values[col] = st.selectbox(label, options=opciones, index=opciones.index(str(valor_default)) if str(valor_default) in opciones else 0)
         
         calcular = st.button("🔮 Calcular riesgo", type="primary", use_container_width=True)
     
     with col_result:
         st.markdown("#### Resultado de la predicción")
 
-        if PREFLIGHT_SCORE is not None:
-            st.caption(f"Preflight del notebook: {PREFLIGHT_SCORE:.6f} | Validado antes de la inferencia final.")
-
-        if PRE_FLIGHT_ROW is not None:
-            with st.expander("Ver registro base de preflight"):
-                st.dataframe(PRE_FLIGHT_ROW, use_container_width=True)
+        pass
 
         if calcular:
             try:
