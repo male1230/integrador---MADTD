@@ -1,14 +1,18 @@
 {
+  "PROYECTO": "SIAGRM Pro",
+  "VERSION": "5.0-Enterprise-Calibrada-ProdDefinitiva",
   "TOTAL_23": 8096,
+  "BAJOS_23": 2807,
+  "MEDIOS_23": 3983,
+  "ALTOS_23": 456,
+  "CRITICOS_23": 850,
   "ALERTAS_23": 1306,
   "PCT_ALERTAS_23": 16.131422924901187,
-  "CRITICOS_23": 850,
-  "ALTOS_23": 456,
-  "MEDIOS_23": 3983,
-  "BAJOS_23": 2807,
   "ROC_AUC_23": 0.7101126177258946,
+  "ROC_AUC_CV_23": 0.645878735740481,
   "DQS_23": 100.0,
   "THRESHOLD_23": 0.28599956741474764,
+  "UMBRAL_BAJO_23": 0.0,
   "UMBRAL_MEDIO_23": 0.35,
   "UMBRAL_ALTO_23": 0.65,
   "UMBRAL_CRITICO_23": 0.9,
@@ -20,17 +24,21 @@
     "departamento",
     "estrato",
     "nivel_formacion",
-    "modalidad_credito"
+    "modalidad_credito",
+    "modalidad_linea",
+    "sector_ies",
+    "categoria_municipio",
+    "rango_valor_total"
   ],
   "RAW_INPUTS_23": [
-    "departamento",
-    "categoria_municipio",
     "sexo",
+    "departamento",
     "estrato",
     "nivel_formacion",
-    "modalidad_linea",
     "modalidad_credito",
+    "modalidad_linea",
     "sector_ies",
+    "categoria_municipio",
     "rango_valor_total"
   ],
   "SIM_BASE_23": {
@@ -38,7 +46,11 @@
     "departamento": "antioquia",
     "estrato": "1",
     "nivel_formacion": "especializacion universitaria",
-    "modalidad_credito": "matricula"
+    "modalidad_credito": "matricula",
+    "modalidad_linea": "posgrado pais",
+    "sector_ies": "oficial",
+    "categoria_municipio": "ciudades y aglomeraciones",
+    "rango_valor_total": "ii"
   },
   "VARIABLES_SOCIODEMOGRAFICAS_23": [
     "sexo",
@@ -56,30 +68,6 @@
     "nivel_formacion",
     "modalidad_credito"
   ],
-  "INSIGHTS_23": [
-    {
-      "tipo": "Territorial",
-      "territorio": "casanare",
-      "hallazgo": "Departamento con mayor score promedio de riesgo.",
-      "valor": "1.0",
-      "accion": "Priorizar seguimiento preventivo en el territorio."
-    },
-    {
-      "tipo": "Modelo",
-      "territorio": "Nacional",
-      "hallazgo": "Regresión Logística fue seleccionada como modelo canónico porque obtuvo el mayor ROC-AUC promedio en la validación cruzada agrupada utilizada para la comparación de modelos.",
-      "valor": "0.645878735740481",
-      "accion": "Utilizar el modelo canónico para las inferencias oficiales."
-    },
-    {
-      "tipo": "Población",
-      "territorio": "Nacional",
-      "hallazgo": "Proporción de segmentos clasificados como Alto o Crítico.",
-      "valor": "16.13",
-      "accion": "Focalizar estrategias preventivas sobre los casos priorizados."
-    }
-  ],
-  "ALERTA_MIN_23": 0.65,
   "IDENTIDAD_18_23": {
     "segmentos": true,
     "bajos": true,
@@ -88,5 +76,6 @@
     "criticos": true,
     "alertas": true,
     "roc_auc": true
-  }
+  },
+  "FECHA_EXPORTACION": "2026-08-16 01:14:40"
 }
