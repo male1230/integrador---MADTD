@@ -152,6 +152,12 @@ VARIABLES_SOCIODEMOGRAFICAS = get_config('VARIABLES_SOCIODEMOGRAFICAS_23', [])
 VARIABLES_ACADEMICAS = get_config('VARIABLES_ACADEMICAS_23', [])
 VARIABLES_OFICIALES = get_config('VARIABLES_OFICIALES_23', [])
 INSIGHTS = get_config('INSIGHTS_23', [])
+# Fallback: algunos exports usan 'HALLAZGOS_CLAVE_23' con estructura de dicts
+if not INSIGHTS:
+    hallazgos = get_config('HALLAZGOS_CLAVE_23', [])
+    if isinstance(hallazgos, list) and hallazgos:
+        # Extraer texto de 'hallazgo' si está disponible, o stringify como fallback
+        INSIGHTS = [h.get('hallazgo') if isinstance(h, dict) and 'hallazgo' in h else str(h) for h in hallazgos]
 
 # =============================================================================
 # HEADER PRINCIPAL
