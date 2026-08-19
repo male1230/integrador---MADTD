@@ -1,0 +1,33 @@
+{
+  "nombre": "SIAGRM Streamlit",
+  "modo": "SSOT_READ_ONLY",
+  "base": "SEGMENTOS_23",
+  "registros": 8096,
+  "numero_variables_raw": 9,
+  "variables_raw": [
+    "departamento",
+    "categoria_municipio",
+    "sexo",
+    "estrato",
+    "nivel_formacion",
+    "modalidad_linea",
+    "modalidad_credito",
+    "sector_ies",
+    "rango_valor_total"
+  ],
+  "modelo_canonico": "Regresion_Logistica",
+  "modelo_runtime": "CalibratedClassifierCV",
+  "calibracion": "isotonic",
+  "threshold_modelo": 0.28599956741474764,
+  "umbral_medio": 0.35,
+  "umbral_alto": 0.65,
+  "umbral_critico": 0.9,
+  "sin_reentrenamiento": true,
+  "sin_datos_sinteticos": true,
+  "origen": "BLOQUE 23 — SIAGRM DASHBOARD EXECUTIVE ENTERPRISE",
+  "artefactos_simulador": [
+    "models/simulador.joblib",
+    "models/preprocessor.joblib",
+    "models/simulador_bundle.joblib"
+  ]
+}
