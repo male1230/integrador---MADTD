@@ -56,11 +56,22 @@ st.markdown(f"""
 .small-muted {{ color:{COLOR_MUTED}; font-size:12px; }}
 [data-testid="stMetricValue"] {{ color:{COLOR_NAVY}; }}
 div[data-baseweb="tab-list"] {{ gap:.2rem; }}
-button[data-baseweb="tab"] {{ font-weight:700; color:{COLOR_MUTED}; }}
-button[data-baseweb="tab"][aria-selected="true"] {{
-  color:{COLOR_NAVY}; border-bottom:3px solid {COLOR_BLUE};
-  background:#EEF5FF;
+/* Modern tab styling: pill-like tabs, more spacing, hover and selected states */
+div[data-baseweb="tab-list"] {{
+        gap:.75rem; padding:6px; background:transparent; display:flex; flex-wrap:wrap; align-items:center;
 }}
+button[data-baseweb="tab"] {{
+        font-weight:700; color:{COLOR_MUTED}; padding:8px 14px; border-radius:10px; background:transparent;
+        border: none; box-shadow: none; transition:all .18s ease; font-size:14px; letter-spacing:.2px;
+}}
+button[data-baseweb="tab"]:hover {{
+        background:rgba(47,128,237,0.06); transform:translateY(-2px); color:{COLOR_NAVY};
+}}
+button[data-baseweb="tab"][aria-selected="true"] {{
+    color:white; background: linear-gradient(90deg,{COLOR_NAVY}, {COLOR_BLUE});
+    box-shadow:0 8px 20px rgba(15,23,42,.08); transform:none;
+}}
+button[data-baseweb="tab"]:focus {{ outline:2px solid rgba(47,128,237,0.18); outline-offset:2px; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -490,15 +501,31 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
+def _reset_filters():
+    for v in VARIABLES_RAW:
+        st.session_state[f"f_{v}"] = []
+    try:
+        if hasattr(st, "experimental_rerun"):
+            st.experimental_rerun()
+    except Exception:
+        pass
+
+# Inicializar claves de sesión para los filtros si no existen (evita errores al asignar)
+for v in VARIABLES_RAW:
+    key = f"f_{v}"
+    if key not in st.session_state:
+        st.session_state[key] = []
+
 filter_cols=st.columns(4)
 selected={}
 for i,v in enumerate(VARIABLES_RAW):
     with filter_cols[i%4]:
         vals=sorted(df_all[v].dropna().astype(str).drop_duplicates().tolist())
-        selected[v]=st.multiselect(v.replace("_"," ").title(), vals, default=vals, key=f"f_{v}")
+        # No seleccionar ninguna opción por defecto (filtros vacíos al iniciar)
+        selected[v]=st.multiselect(v.replace("_"," ").title(), vals, default=st.session_state.get(f"f_{v}", []), key=f"f_{v}")
 
-if st.button("Restablecer filtros"):
-    st.rerun()
+# Botón para restablecer filtros (posicionado debajo de los dropdowns)
+st.button("Restablecer filtros", on_click=_reset_filters)
 
 df=df_all.copy()
 for v,vals in selected.items():
